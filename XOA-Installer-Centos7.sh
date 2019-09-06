@@ -80,7 +80,7 @@ echo "1 ..."
 echo "${green}==================================="
 cd /opt/xen-orchestra
 curl -s -L -o /root/no_banner.diff https://raw.githubusercontent.com/netmax79/xen-orchestra-ce/master/alpine/patches/no_banner.diff
-patch -p1 < /root/no_banner.diff
+patch -p1 -R < /root/no_banner.diff
 /usr/bin/yarn
 /usr/bin/yarn build
 # configure xoa
@@ -95,8 +95,8 @@ sed -i "s|#'/' = '/path/to/xo-web/dist/'|'/' = '../xo-web/dist/'|" .xo-server.to
 sed -i "s|port = 80|#port = 80|" .xo-server.toml
 sed -i "s|# port = 443|port = 443|" .xo-server.toml
 # certificate name design auto generate after install xo.
-sed -i "s|# cert = './certificate.pem'|cert = '/root/cert/cert-selfsigned.pem'|" .xo-server.toml
-sed -i "s|# key = './key.pem'|key = '/root/cert/key-selfsigned.pem'|" .xo-server.toml
+sed -i "s|# cert = './certificate.pem'|cert = '/etc/ssl/cert/cert-selfsigned.pem'|" .xo-server.toml
+sed -i "s|# key = './key.pem'|key = '/etc/ssl/cert/key-selfsigned.pem'|" .xo-server.toml
 # create node
 echo "${orange}==================================="
 echo "Create node ..."
