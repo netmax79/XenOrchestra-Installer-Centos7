@@ -143,13 +143,14 @@ echo "+++++++++++++++++++++++++++"
 systemctl daemon-reload
 systemctl enable xo-server.service
 service xo-server start
+
+if [ "`rpm -q firewalld`" == "0" ] ; then
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --zone=public --add-port=443/tcp --permanent
 firewall-cmd --reload
-
 #service firewalld stop
 #systemctl disable firewalld.service
-
+fi
 service xo-server restart 
 service xo-server status
 node -v 
