@@ -1,5 +1,5 @@
---- packages/xo-web/src/xo-app/menu/index.js.orig	2019-09-06 16:05:32.439332499 +0200
-+++ packages/xo-web/src/xo-app/menu/index.js	2019-09-06 16:09:00.779122901 +0200
+--- xen-orchestra/packages/xo-web/src/xo-app/menu/index.js.orig	2019-09-06 16:05:32.439332499 +0200
++++ xen-orchestra/packages/xo-web/src/xo-app/menu/index.js	2019-09-06 16:09:00.779122901 +0200
 @@ -422,78 +422,6 @@
            )}
            <li>&nbsp;</li>

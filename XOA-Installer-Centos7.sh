@@ -78,10 +78,26 @@ echo "${green}==================================="
 echo "${orange}==================================="
 echo "1 ..."
 echo "${green}==================================="
+echo "Downloading patches ..."
+echo "${green}==================================="
 cd /opt/xen-orchestra
-curl -s -L -o /root/no_banner.diff https://raw.githubusercontent.com/netmax79/xen-orchestra-ce/master/alpine/patches/no_banner.diff
-patch -p1 -R < /root/no_banner.diff
+curl -s -L -o /root/series https://raw.githubusercontent.com/netmax79/XenOrchestra-Installer-Centos7/patches/series
+for PATCH in $(cat /root/series) ; do
+ curl -s -L -o /root/${PATCH} https://raw.githubusercontent.com/netmax79/XenOrchestra-Installer-Centos7/patches/${PATCH}
+done
+echo "${orange}==================================="
+echo "Running yarn ..."
+echo "${orange}==================================="
 /usr/bin/yarn
+echo "${green}==================================="
+echo "Applying patches ..."
+echo "${orange}==================================="
+for PATCH in $(cat /root/series) ; do
+ patch -p1 < /root/${PATCH}
+done
+echo "${orange}==================================="
+echo "Running yarn build ..."
+echo "${orange}==================================="
 /usr/bin/yarn build
 # configure xoa
 echo "${green}==================================="
@@ -165,7 +181,6 @@ host=$(hostname -I)
 echo "and then acces https://$host"
 echo "username : admin@admin.net"
 echo "password : admin"
-#echo "follow my ig @nextorchestra / @pauziah_collection"
 echo "${orange}================================================="
 service sshd restart
 echo "--------------------------------------------------------------"
