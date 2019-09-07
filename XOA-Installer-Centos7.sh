@@ -81,9 +81,9 @@ echo "${green}==================================="
 echo "Downloading patches ..."
 echo "${green}==================================="
 cd /opt/xen-orchestra
-curl -s -L -o /root/series https://raw.githubusercontent.com/netmax79/XenOrchestra-Installer-Centos7/patches/series
+curl -s -L -o /root/series https://raw.githubusercontent.com/netmax79/XenOrchestra-Installer-Centos7/master/patches/series
 for PATCH in $(cat /root/series) ; do
- curl -s -L -o /root/${PATCH} https://raw.githubusercontent.com/netmax79/XenOrchestra-Installer-Centos7/patches/${PATCH}
+ curl -s -L -o /root/${PATCH} https://raw.githubusercontent.com/netmax79/XenOrchestra-Installer-Centos7/master/patches/${PATCH}
 done
 echo "${orange}==================================="
 echo "Running yarn ..."
