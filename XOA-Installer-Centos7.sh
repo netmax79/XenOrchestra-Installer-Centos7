@@ -11,8 +11,9 @@ echo "${green}==================================="
 echo "${green}Working...."
 echo "${green}Please wait.."
 echo "${green}==================================="
-yum install epel-release -y > /dev/null 2>&1
-#yum update -y > /dev/null 2>&1
+yum install epel-release haveged -y > /dev/null 2>&1
+systemctl enable haveged
+systemctl start haveged
 # install ssl
 echo "${green}==================================="
 echo "Install Open SSL.."
@@ -47,7 +48,7 @@ sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/cert-forensics-tools.repo > /d
 yum --enablerepo=forensics install -y libvhdi-tools > /dev/null 2>&1
 # install kebutuhan xoa
 echo "${green}==================================="
-echo "Install tool 4 xoa..."
+echo "Install build tools 4 xoa..."
 echo "${green}==================================="
 sleep 1
 yum install gcc gcc-c++ make openssl-devel patch redis libpng-devel python git nfs-utils -y > /dev/null 2>&1
