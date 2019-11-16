@@ -1,0 +1,52 @@
+--- xen-orchestra/packages/xo-web/src/xo-app/menu/index.js.previous	2019-11-16 20:33:41.241767389 +0100
++++ xen-orchestra/packages/xo-web/src/xo-app/menu/index.js	2019-11-16 20:35:32.532307804 +0100
+@@ -223,41 +223,6 @@
+           },
+         ],
+       },
+-      {
+-        to: isAdmin ? 'xoa/update' : 'xoa/notifications',
+-        icon: 'menu-xoa',
+-        label: 'xoa',
+-        extra: [
+-          !isAdmin || xoaState === 'upToDate' ? null : (
+-            <UpdateTag key='update' />
+-          ),
+-          noNotifications ? null : <NotificationTag key='notification' />,
+-        ],
+-        subMenu: [
+-          isAdmin && {
+-            to: 'xoa/update',
+-            icon: 'menu-update',
+-            label: 'updatePage',
+-            extra: <UpdateTag />,
+-          },
+-          isAdmin && {
+-            to: 'xoa/licenses',
+-            icon: 'menu-license',
+-            label: 'licensesPage',
+-          },
+-          {
+-            to: 'xoa/notifications',
+-            icon: 'menu-notification',
+-            label: 'notificationsPage',
+-            extra: <NotificationTag />,
+-          },
+-          isAdmin && {
+-            to: 'xoa/support',
+-            icon: 'menu-support',
+-            label: 'supportPage',
+-          },
+-        ],
+-      },
+       isAdmin && {
+         to: '/settings/servers',
+         icon: 'menu-settings',
+@@ -341,7 +306,6 @@
+         label: 'taskMenu',
+         pill: nTasks,
+       },
+-      isAdmin && { to: '/xosan', icon: 'menu-xosan', label: 'xosan' },
+       !(noOperatablePools && noResourceSets) && {
+         to: '/vms/new',
+         icon: 'menu-new',
