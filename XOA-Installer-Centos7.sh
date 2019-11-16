@@ -94,6 +94,7 @@ echo "${green}==================================="
 echo "Applying patches ..."
 echo "${orange}==================================="
 for PATCH in $(cat /root/series) ; do
+ echo "Patch: ${PATCH}"
  patch -p1 < /root/${PATCH}
 done
 echo "${orange}==================================="
