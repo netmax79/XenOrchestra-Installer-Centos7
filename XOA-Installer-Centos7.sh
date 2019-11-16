@@ -180,7 +180,7 @@ echo "done"
 echo "${green}==================================="
 echo "${orange}==================================="
 host=$(hostname -I)
-echo "and then acces https://$host"
+echo "and then access https://$host"
 echo "username : admin@admin.net"
 echo "password : admin"
 echo "${orange}================================================="
