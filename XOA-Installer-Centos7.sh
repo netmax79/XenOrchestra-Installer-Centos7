@@ -11,7 +11,8 @@ echo "${green}==================================="
 echo "${green}Working...."
 echo "${green}Please wait.."
 echo "${green}==================================="
-yum install epel-release haveged -y > /dev/null 2>&1
+yum install epel-release -y > /dev/null 2>&1
+yum install haveged rsync -y > /dev/null 2>&1
 systemctl enable haveged
 systemctl start haveged
 # install ssl
@@ -23,21 +24,24 @@ yum install mod_ssl -y > /dev/null 2>&1
 echo "${red}==================================="
 echo "add repo nodeJS v8.xx..."
 echo "${red}==================================="
-curl -s -L https://rpm.nodesource.com/setup_8.x | bash - > /dev/null 2>&1
-curl -s -o /etc/yum.repos.d/yarn.repo https://dl.yarnpkg.com/rpm/yarn.repo > /dev/null 2>&1
+curl -L -s -o /tmp/node-v12.17.0-linux-x64.tar.gz https://nodejs.org/dist/latest-v12.x/node-v12.17.0-linux-x64.tar.gz
+tar -C /tmp -xzf /tmp/node-v12.17.0-linux-x64.tar.gz
 # Node
 echo "${red}==================================="
 echo "install nodeJS...."
 echo "Please wait......"
 echo "${red}==================================="
 sleep 1
-yum install nodejs -y  > /dev/null 2>&1
+CURD=`pwd`
+cd /tmp/node-v12.17.0-linux-x64
+rsync -a bin include lib share /usr/local/
+cd ${CURD}
 # install yarn package
 echo "${green}==================================="
 echo "Install yarn package...."
 echo "${green}==================================="
 sleep 2
-yum install yarn -y > /dev/null 2>&1
+npm install yarn --global
 # install lib vhd tools
 sleep 1
 echo "${red}==================================="
