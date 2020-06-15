@@ -24,8 +24,8 @@ yum install mod_ssl -y > /dev/null 2>&1
 echo "${red}==================================="
 echo "add repo nodeJS v8.xx..."
 echo "${red}==================================="
-curl -L -s -o /tmp/node-v12.17.0-linux-x64.tar.gz https://nodejs.org/dist/latest-v12.x/node-v12.17.0-linux-x64.tar.gz
-tar -C /tmp -xzf /tmp/node-v12.17.0-linux-x64.tar.gz
+curl -L -s -o /tmp/node-v12.18.0-linux-x64.tar.gz https://nodejs.org/dist/latest-v12.x/node-v12.18.0-linux-x64.tar.gz
+tar -C /tmp -xzf /tmp/node-v12.18.0-linux-x64.tar.gz
 # Node
 echo "${red}==================================="
 echo "install nodeJS...."
@@ -33,7 +33,7 @@ echo "Please wait......"
 echo "${red}==================================="
 sleep 1
 CURD=`pwd`
-cd /tmp/node-v12.17.0-linux-x64
+cd /tmp/node-v12.18.0-linux-x64
 rsync -a bin include lib share /usr/local/
 cd ${CURD}
 # install yarn package
